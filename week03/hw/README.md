@@ -1,3 +1,4 @@
+#h
 # Homework 3 - Internet of Things 101
 
 ## Please note that this homework is graded
