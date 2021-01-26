@@ -179,6 +179,13 @@ On the NX, you should have a mosquitto broker container, based on Alpine linux. 
 ## Submission
 Please point us to the repository of your code [private repo please] and provide an http link to the location of your faces in the object storage.  Also, explan the naming of the MQTT topics and the QoS that you used.
 
+### Answers:
+1. Http link to the location of my ugly faces... https://s3.console.aws.amazon.com/s3/buckets/yixunzhw3bucket?region=us-west-1&tab=objects
+
+2. On NX, when camera starts streaming of video data, the face detection begins. So, the MQTT topic for the local face detection process is call "face_detection". The local broker listens to the "face_detection" faces. If it detects data, the MQTT client will publish the binary data to the remote MQTT topic named "remote_face_processor". That topic is on the remote VM. It listens to the face cropped out binary data. When the data is sent from local to the remote topic, binary data will transfer into image which will be stored in S3 bucket.
+
+3. I choose QoS = 0, which means MQTT client will at most publish once for hw03.There is no guarantee of delivery. But, it doesn't matter in this case. Since this project only detects faces. And for my case, the faces are just my faces. So, it doesn't matter all the images sent or not. 
+
 ## Some hints
 1. See Week 1's lab (https://github.com/MIDS-scaling-up/v2/blob/master/week01/lab/Dockerfile.yolov5) for how to install openCV.
 2. To make storing in Object Store easier, look at https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html

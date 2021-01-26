@@ -6,7 +6,7 @@ LOCAL_MQTT_TOPIC="face_detection"
 
 REMOTE_MQTT_HOST="13.52.218.185"
 REMOTE_MQTT_PORT=1883
-REMOTE_MQTT_TOPIC="remote_face_detection"
+REMOTE_MQTT_TOPIC="remote_face_processor"
 
 def on_connect_local(client, userdata, flags, rc):
     print("connected to local broker with rc: " + str(rc))
