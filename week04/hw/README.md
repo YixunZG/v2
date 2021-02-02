@@ -16,11 +16,12 @@ Once you hit this page, the network starts running.
 In this lab, we will look at the processing of the MNIST data set using ConvnetJS.  This demo uses this page: http://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html
 The MNIST data set consists of 28x28 black and white images of hand written digits and the goal is to correctly classify them.  Once you load the page, the network starts running and you can see the loss and predictions change in real time.  Try the following:
 * Name all the layers in the network, describe what they do.
-* Experiment with the number  and size of filters in each layer.  Does it improve the accuracy?
-* Remove the pooling layers.  Does it impact the accuracy?
-* Add one more conv layer.  Does it help with accuracy?
-* Increase the batch size.  What impact does it have?
-* What is the best accuracy you can achieve? Are you over 99%? 99.5%?
+The first layer gets the inputs to the convolution layer which uses the filter 5*5 for each image with the stride 1. The second layer is relu using the function max(0, x). The next layer is the pooling layer with 2*2 pooling size and stride 2. The next layer is the convolution layer again with filter size 5*5 for 8 images with the stride 1. The next layer is relu layer followed by pooling layer. And the fully connected layer which gives final probabilities for each label. The final layer is the softmax layer which assigns decimal probabilities to each class in a multi-class problem.
+* Experiment with the number  and size of filters in each layer.  Does it improve the accuracy? Some combinations can slightly improve others slight worse. But, mostly depends on time.
+* Remove the pooling layers.  Does it impact the accuracy? Training accuacy increases slowly.
+* Add one more conv layer.  Does it help with accuracy? Yes, more accurate.
+* Increase the batch size.  What impact does it have? The learning speed looks slowly.
+* What is the best accuracy you can achieve? Are you over 99%? 99.5%? No. arround 95%
 
 #### 3. Build your own model in Keras
 The [Conversation AI](https://conversationai.github.io/) team, a research initiative founded by [Jigsaw](https://jigsaw.google.com/) and Google (both a part of Alphabet) are working on tools to help improve online conversation. One area of focus is the study of negative online behaviors, like toxic comments (i.e. comments that are rude, disrespectful or otherwise likely to make someone leave a discussion).   
