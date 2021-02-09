@@ -81,8 +81,11 @@ input_height = 299
 ### Questions:
 
 1. What is TensorFlow? Which company is the leading contributor to TensorFlow?
+Tensorflow is python open source library for numerical computation that makes machine learning faster and easier. Google is leading this.
 1. What is TensorRT? How is it different from TensorFlow?
+NVIDIA TensorRT is an SDF for high-performance deep learning inference. NIVIDIA TensorRT speeds up deep learning inference through optimizations and high-performance runtimes for GPU-based platforms.
 1. What is ImageNet? How many images does it contain? How many classes?
+
 1. Please research and explain the differences between MobileNet and GoogleNet (Inception) architectures.
 1. In your own words, what is a bottleneck?
 1. How is a bottleneck different from the concept of layer freezing?
