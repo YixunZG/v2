@@ -115,7 +115,10 @@ Bonus points, explore to mount the directories permanently with FSTAB.
 
 Please submit the nohup.out file along with screenshots of your Tensorboard indicating training progress (Blue score, eval loss) over time.  Also, answer the following (simple) questions:
 * How long does it take to complete the training run? (hint: this session is on distributed training, so it *will* take a while)
+It took about 4 days to train 300k steps.
 * Do you think your model is fully trained? How can you tell?
+![image](https://user-images.githubusercontent.com/59550524/110579990-a4453b00-811c-11eb-85ee-099c2a2cb74b.png)
+Yes, from the training loss image, it reached a saturation point.
 * Were you overfitting?
 * Were your GPUs fully utilized?
 * Did you monitor network traffic (hint:  ```apt install nmon ```) ? Was network the bottleneck?
