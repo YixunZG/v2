@@ -115,22 +115,39 @@ Bonus points, explore to mount the directories permanently with FSTAB.
 
 Please submit the nohup.out file along with screenshots of your Tensorboard indicating training progress (Blue score, eval loss) over time.  Also, answer the following (simple) questions:
 * How long does it take to complete the training run? (hint: this session is on distributed training, so it *will* take a while)
+
 It took about 4 days to train 300k steps.
+
 * Do you think your model is fully trained? How can you tell?
 ![image](https://user-images.githubusercontent.com/59550524/110579990-a4453b00-811c-11eb-85ee-099c2a2cb74b.png)
 Yes, from the training loss image, it reached a saturation point.
+
 * Were you overfitting?
+
 No. The training loss didn't go up crazy. It is decreasing at a suitable speed and reached a stable status. And the evaluation loss is decreasing and reached a stable status and didn't go up.
+
 * Were your GPUs fully utilized?
+
 Yes, using "nvidia-smi" I saw that the GPUs are fully utilized.
+
 * Did you monitor network traffic (hint:  ```apt install nmon ```) ? Was network the bottleneck?
 
 * Take a look at the plot of the learning rate and then check the config file.  Can you explan this setting?
+![image](https://user-images.githubusercontent.com/59550524/110601329-ac5fa380-8139-11eb-9ef7-d54644b3cb9d.png)
+The config file transformer-base.py file defines lr policy parameters with warmup_steps of 8000. So, the first 8000 steps from the graph were warming up. And the learning rate increased linearly for the first 8000 steps, and after 8000 steps, the learning rate decreased.
 
 * How big was your training set (mb)? How many training lines did it contain?
+
+In the docker container, using "ls -la" under the "/data/wmt16_de_en" folder, I got "958585627" which is about 958MB size of training set(train.clean.en.shuffled.BPE_common.32k.tok). And if I did "wc -l train.clean.en.shuffled.BPE_common.32k.tok", I got 4524868 lines.
+
 * What are the files that a TF checkpoint is comprised of?
+
+There is a 
+
 * How big is your resulting model checkpoint (mb)?
+
 * Remember the definition of a "step". How long did an average step take?
+
 * How does that correlate with the observed network utilization between nodes?
 
 ### Hints
