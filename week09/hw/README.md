@@ -120,9 +120,13 @@ It took about 4 days to train 300k steps.
 ![image](https://user-images.githubusercontent.com/59550524/110579990-a4453b00-811c-11eb-85ee-099c2a2cb74b.png)
 Yes, from the training loss image, it reached a saturation point.
 * Were you overfitting?
+No. The training loss didn't go up crazy. It is decreasing at a suitable speed and reached a stable status. And the evaluation loss is decreasing and reached a stable status and didn't go up.
 * Were your GPUs fully utilized?
+Yes, using "nvidia-smi" I saw that the GPUs are fully utilized.
 * Did you monitor network traffic (hint:  ```apt install nmon ```) ? Was network the bottleneck?
+
 * Take a look at the plot of the learning rate and then check the config file.  Can you explan this setting?
+
 * How big was your training set (mb)? How many training lines did it contain?
 * What are the files that a TF checkpoint is comprised of?
 * How big is your resulting model checkpoint (mb)?
