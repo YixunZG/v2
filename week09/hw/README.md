@@ -142,13 +142,33 @@ In the docker container, using "ls -la" under the "/data/wmt16_de_en" folder, I 
 
 * What are the files that a TF checkpoint is comprised of?
 
-There is a 
+Here are the files:
+best_models
+checkpoint
+events.out.tfevents.1614921692.ip-172-31-7-8
+graph.pbtxt
+model.ckpt-0.data-00000-of-00001
+model.ckpt-0.index
+model.ckpt-0.meta
+model.ckpt-299998.data-00000-of-00001
+model.ckpt-299998.index
+model.ckpt-299998.meta
+model.ckpt-300000.data-00000-of-00001
+model.ckpt-300000.index
+model.ckpt-300000.meta
+
 
 * How big is your resulting model checkpoint (mb)?
 
+About 850mb.
+
 * Remember the definition of a "step". How long did an average step take?
 
+The whole process took 4days and 10hours to run 300k steps. So, the average speed is 1.26seconds.
+
 * How does that correlate with the observed network utilization between nodes?
+
+If the network is better between nodes, the speed of a step will be faster unless the network hit the bottleneck.
 
 ### Hints
 Your BLEU TB plot should look something like this:
