@@ -170,7 +170,7 @@ The whole process took 4days and 10hours to run 300k steps. So, the average spee
 
 * How does that correlate with the observed network utilization between nodes?
 
-The higher the network is, the time taken for a step is smaller.
+The higher the network utilization is, the time taken for a step is smaller unless the network hit bottleneck.
 
 ### Hints
 Your BLEU TB plot should look something like this:
