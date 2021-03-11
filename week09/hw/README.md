@@ -128,9 +128,11 @@ No. The training loss didn't go up crazy. It is decreasing at a suitable speed a
 
 * Were your GPUs fully utilized?
 
-Yes, using "nvidia-smi" I saw that the GPUs are fully utilized.
+Yes, using "nvidia-smi" I saw that the GPUs are fully utilized. There are 100% GPU-utilization.
 
 * Did you monitor network traffic (hint:  ```apt install nmon ```) ? Was network the bottleneck?
+
+No bottleneck in network. The instance transfer rate is about 1000Mbps, and the network transfer rates are about 200Mbps. So, the data still can be transfered.
 
 * Take a look at the plot of the learning rate and then check the config file.  Can you explan this setting?
 ![image](https://user-images.githubusercontent.com/59550524/110601329-ac5fa380-8139-11eb-9ef7-d54644b3cb9d.png)
@@ -168,7 +170,7 @@ The whole process took 4days and 10hours to run 300k steps. So, the average spee
 
 * How does that correlate with the observed network utilization between nodes?
 
-If the network is better between nodes, the speed of a step will be faster unless the network hit the bottleneck.
+The higher the network is, the time taken for a step is smaller.
 
 ### Hints
 Your BLEU TB plot should look something like this:
