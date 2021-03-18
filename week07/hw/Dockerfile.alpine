@@ -1,0 +1,12 @@
+FROM alpine
+
+RUN apk update && apk upgrade
+RUN apk add \
+	mosquitto \
+	mosquitto-clients \
+	python3 \
+	py3-pip \
+	vim
+
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install paho-mqtt
