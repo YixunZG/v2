@@ -37,10 +37,12 @@ class DQN:
         # a random action, or the highest scoring predicted action
         self.epsilon = 1.0
         self.epsilon_decay = 0.995
-        self.gamma = 0.99
+        #self.gamma = 0.99
+        self.gamma = 0.8
 
         # Learning rate
-        self.lr = 0.65
+        #self.lr = 0.001
+        self.lr = 0.1
 
         #######################
 
@@ -55,8 +57,16 @@ class DQN:
 
     def initialize_model(self):
         model = Sequential()
-        model.add(Dense(self.density_first_layer, input_dim=self.num_observation_space, activation=relu))
-        model.add(Dense(self.density_second_layer, activation=relu))
+        # Me: add additional layers
+        model.add(Dense(256, input_dim=self.num_observation_space, activation=relu))
+        model.add(Dense(128, activation=relu))
+        model.add(Dense(64, activation=relu))
+        model.add(Dense(32, activation=relu))
+        #########################
+        #model.add(Dense(self.density_first_layer, input_dim=self.num_observation_space, activation=relu))
+        # Me: replace the above layer
+        model.add(Dense(self.density_first_layer, activation=relu))
+        model.add(Dense(self.density_second_layer, activation=sigmoid))
         model.add(Dense(self.num_action_space, activation=linear))
 
         # Compile the model
