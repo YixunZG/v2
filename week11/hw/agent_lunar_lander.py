@@ -40,7 +40,7 @@ class DQN:
         self.gamma = 0.99
 
         # Learning rate
-        self.lr = 0.001
+        self.lr = 0.65
 
         #######################
 
