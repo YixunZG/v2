@@ -131,7 +131,12 @@ Questions to answer:
 4) Did your changes improve or degrade the model? How close did you get to a test run with 100% of the scores above 200?
 5) Based on what you observed, what conclusions can you draw about the different parameters and their values? 
 6) What is the purpose of the epsilon value?
+
+Answer: Epsilon value here means the probability of selecting a random action, how greedy the agent wants to learn from the environment. Epsilon value is important because it can help the Q learning to balance between exploration and exploitation. When an agent is exploring, it can improve its current knowledge and gain better rewards in the long run. Whereas, when an agent is exploiting, it can get more reward immediately. And epsilon helps the model to do exploration, while (1-epsilon) is doing exploitation.
+
 7) Describe "Q-Learning".
+
+Answer: Q-learning, a model-free reinforcement learning, is policy based. And it is off-policy, which means it is independent of the agent's actions. This algorithm seeks the best action to take given the current state. It can also select a random action based on the epsilon value. The goal of q-learning is to maximize the total rewards.
 
 ## Grading is based on the changes made and the observed output, not on the accuracy of the model.
 
