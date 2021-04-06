@@ -140,6 +140,7 @@ Answer: I also changed the epsilon value from 1 to 0.95. I thought it should exp
 4) Did your changes improve or degrade the model? How close did you get to a test run with 100% of the scores above 200?
 
 Answer: I improved the model by changing the density_first_layer and density_second_layer into 64. 
+Not 100% of the scores are above 200, but the most of them are.  
 
 5) Based on what you observed, what conclusions can you draw about the different parameters and their values? 
 
