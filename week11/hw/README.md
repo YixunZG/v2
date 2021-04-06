@@ -126,17 +126,32 @@ Upload all the videos to Cloud Object Storage and provide links using the instru
 Submit a write-up of the tweaks you made to the model and the effect they had on the results. 
 Questions to answer:
 1) What parameters did you change, and what values did you use? 
-2) Whhy did you change these parameters?
+
+Answer: I changed the epochs from 1 to 10. Cause I wanted to see if it was not training that often, would the result be better. But, the result was similar bad. It seemed that it cannot converge. And the average score of the testings is about -250. (see the num_epoch_results for more details) 
+
+2) Why did you change these parameters?
+
+Answer: Because I didn't want to let the model greedyly training. I thought it might be overfitting. But, it turns out in the limited amount of steps, the model should do greedy learning. 
+
 3) Did you try any other changes (like adding layers or changing the epsilon value) that made things better or worse?
+
+Answer: I also changed the epsilon value from 1 to 0.95. I thought it should explore and exploit at the same time even from the begining. But, it turns out it cannot learn within limited steps. And the model is not better. Additionally, I added complex layers starting with some high dense. But, the model seems not converaging. The average rewards of the tests is -109.57.
+
 4) Did your changes improve or degrade the model? How close did you get to a test run with 100% of the scores above 200?
+
+Answer: I improved the model by changing the density_first_layer and density_second_layer into 64. 
+
 5) Based on what you observed, what conclusions can you draw about the different parameters and their values? 
+
+Answer: If the density_first_layer and density_first_layer are too high, the nodes of each layer are too complex, the model will not converge. And if it is too simple, some features cannot be captured. The num_epochs means at which step, the model should use the data to do training. This number should be as greedy as possible which is 1. Similar to density of the layer, the batch_sisze shouldn't be too large or too small. The epsilon_min should be approaching to 0. Which means the learning rate in the end is very small and it should be. The epsilon should be set to 1. As mentioned above the epsilon should be 1 at first to greedily learning. The decay speed of epsilon should be very slow, cause otherwise, it will stop learning before it can get enough training. Gamma is the discount factor, it discount the future rewards. The model consider future rewards with greate weight, willing to delay the reward.
+
 6) What is the purpose of the epsilon value?
 
 Answer: Epsilon value here means the probability of selecting a random action, how greedy the agent wants to learn from the environment. Epsilon value is important because it can help the Q learning to balance between exploration and exploitation. When an agent is exploring, it can improve its current knowledge and gain better rewards in the long run. Whereas, when an agent is exploiting, it can get more reward immediately. And epsilon helps the model to do exploration, while (1-epsilon) is doing exploitation.
 
 7) Describe "Q-Learning".
 
-Answer: Q-learning, a model-free reinforcement learning, is policy based. And it is off-policy, which means it is independent of the agent's actions. This algorithm seeks the best action to take given the current state. It can also select a random action based on the epsilon value. The goal of q-learning is to maximize the total rewards.
+Answer: Q-learning, a model-free reinforcement learning, is policy based. This algorithm seeks the best action to take given the current state. It can also select a random action based on the epsilon value. The goal of q-learning is to maximize the total rewards.
 
 ## Grading is based on the changes made and the observed output, not on the accuracy of the model.
 

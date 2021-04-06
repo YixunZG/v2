@@ -11,7 +11,7 @@ import skvideo.io
 from keras.models import Sequential
 from keras.layers import Dense
 from collections import deque
-from keras.activations import relu, linear
+from keras.activations import relu, linear, sigmoid, softmax
 from keras.losses import mean_squared_error
 from keras.optimizers import Adam
 import random
@@ -27,22 +27,21 @@ class DQN:
 
         #######################
         # Change these parameters to improve performance
-        self.density_first_layer = 16
-        self.density_second_layer = 8
-        self.num_epochs = 1
+        self.density_first_layer = 16 #64
+        self.density_second_layer = 8 #64
+        self.num_epochs = 10
         self.batch_size = 64
         self.epsilon_min = 0.01
 
         # epsilon will randomly choose the next action as either
         # a random action, or the highest scoring predicted action
         self.epsilon = 1.0
+        #self.epsilon = 0.995
         self.epsilon_decay = 0.995
-        #self.gamma = 0.99
-        self.gamma = 0.8
+        self.gamma = 0.99
 
         # Learning rate
-        #self.lr = 0.001
-        self.lr = 0.1
+        self.lr = 0.001
 
         #######################
 
@@ -52,21 +51,15 @@ class DQN:
         self.num_action_space = self.action_space.n
         self.num_observation_space = env.observation_space.shape[0]
 
-
         self.model = self.initialize_model()
 
     def initialize_model(self):
         model = Sequential()
         # Me: add additional layers
-        model.add(Dense(256, input_dim=self.num_observation_space, activation=relu))
-        model.add(Dense(128, activation=relu))
-        model.add(Dense(64, activation=relu))
-        model.add(Dense(32, activation=relu))
+        model.add(Dense(self.density_first_layer, input_dim=self.num_observation_space, activation=relu))
         #########################
-        #model.add(Dense(self.density_first_layer, input_dim=self.num_observation_space, activation=relu))
         # Me: replace the above layer
-        model.add(Dense(self.density_first_layer, activation=relu))
-        model.add(Dense(self.density_second_layer, activation=sigmoid))
+        model.add(Dense(self.density_second_layer, activation=relu))
         model.add(Dense(self.num_action_space, activation=linear))
 
         # Compile the model
